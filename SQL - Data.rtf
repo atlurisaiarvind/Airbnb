@@ -1,0 +1,234 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2757
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww20040\viewh14060\viewkind0
+\deftab560
+\pard\pardeftab560\slleading20\partightenfactor0
+
+\f0\fs26 \cf0 DROP DATABASE IF EXISTS Airbnb;\
+CREATE DATABASE Airbnb;\
+\
+DROP TABLE UserData;\
+CREATE TABLE UserData \
+(\
+    UserID	VARCHAR(512),\
+    Username	VARCHAR(512),\
+    Email	VARCHAR(512),\
+    Status 	VARCHAR(512),\
+    CONSTRAINT PK_UserData PRIMARY KEY (UserID)\
+);\
+\
+INSERT INTO UserData (UserID, Username, Email, Status ) VALUES ('GU137026', 'Ton_Fede_Hernandez', 'tonfedehernandez@example.com', 'Guest ');\
+INSERT INTO UserData (UserID, Username, Email, Status ) VALUES ('HO155548', 'Maria_Johnson', 'mariajohnson@example.com', 'Host');\
+INSERT INTO UserData (UserID, Username, Email, Status ) VALUES ('GU158633', 'Marlouke_Jones', 'marloukejones@example.com', 'Guest ');\
+INSERT INTO UserData (UserID, Username, Email, Status ) VALUES ('HO162467', 'Nicole_Rodriguez', 'nicolerodriguez@example.com', 'Host');\
+INSERT INTO UserData (UserID, Username, Email, Status ) VALUES ('GU168769', 'Riks_Davis', 'riksdavis@example.com', 'Guest ');\
+INSERT INTO UserData (UserID, Username, Email, Status ) VALUES ('HO171054', 'Kamiel_Miller', 'kamielmiller@example.com', 'Host');\
+INSERT INTO UserData (UserID, Username, Email, Status ) VALUES ('GU179528', 'Pierre_Williams', 'pierrewilliams@example.com', 'Guest ');\
+INSERT INTO UserData (UserID, Username, Email, Status ) VALUES ('HO189754', 'Marijn_Wilson', 'marijnwilson@example.com', 'Host');\
+INSERT INTO UserData (UserID, Username, Email, Status ) VALUES ('GU190943', 'Nanna_Brown', 'nannabrown@example.com', 'Guest ');\
+INSERT INTO UserData (UserID, Username, Email, Status ) VALUES ('HO193038', 'Johan_Gonzalez', 'johangonzalez@example.com', 'Host');\
+INSERT INTO UserData (UserID, Username, Email, Status ) VALUES ('GU212050', 'Danielle_Lopez', 'daniellelopez@example.com', 'Guest ');\
+INSERT INTO UserData (UserID, Username, Email, Status ) VALUES ('HO213371', 'Hendrik_Anderson', 'hendrikanderson@example.com', 'Host');\
+INSERT INTO UserData (UserID, Username, Email, Status ) VALUES ('GU214531', 'Henry_Martinez', 'henrymartinez@example.com', 'Guest ');\
+INSERT INTO UserData (UserID, Username, Email, Status ) VALUES ('HO219276', 'Alex_Garcia', 'alexgarcia@example.com', 'Host');\
+\
+\
+DROP TABLE PhoneNumbers\
+CREATE TABLE PhoneNumbers \
+(\
+    PhoneNumber VARCHAR(512),\
+    UserID VARCHAR(512), \
+    CONSTRAINT PK_PhoneNumbers PRIMARY KEY (PhoneNumber),\
+  	CONSTRAINT FK_PhoneNumber_UserData FOREIGN KEY (UserID) REFERENCES UserData(UserID)\
+);\
+\
+INSERT INTO PhoneNumbers (PhoneNumber, UserID) VALUES ('3818016007', 'GU137026');\
+INSERT INTO PhoneNumbers (PhoneNumber, UserID) VALUES ('3234988133', 'HO155548');\
+INSERT INTO PhoneNumbers (PhoneNumber, UserID) VALUES ('9868512785', 'GU158633');\
+INSERT INTO PhoneNumbers (PhoneNumber, UserID) VALUES ('6489285096', 'HO162467');\
+INSERT INTO PhoneNumbers (PhoneNumber, UserID) VALUES ('5768179466', 'GU168769');\
+INSERT INTO PhoneNumbers (PhoneNumber, UserID) VALUES ('7188194413', 'HO171054');\
+INSERT INTO PhoneNumbers (PhoneNumber, UserID) VALUES ('8819856592', 'GU179528');\
+INSERT INTO PhoneNumbers (PhoneNumber, UserID) VALUES ('9092552572', 'HO189754');\
+INSERT INTO PhoneNumbers (PhoneNumber, UserID) VALUES ('7324007574', 'GU190943');\
+INSERT INTO PhoneNumbers (PhoneNumber, UserID) VALUES ('7206702678', 'HO193038');\
+INSERT INTO PhoneNumbers (PhoneNumber, UserID) VALUES ('6162723924', 'GU212050');\
+INSERT INTO PhoneNumbers (PhoneNumber, UserID) VALUES ('2125818010', 'HO213371');\
+INSERT INTO PhoneNumbers (PhoneNumber, UserID) VALUES ('7667606446', 'GU214531');\
+INSERT INTO PhoneNumbers (PhoneNumber, UserID) VALUES ('6292003446', 'HO219276');\
+INSERT INTO PhoneNumbers (PhoneNumber, UserID) VALUES ('2064875478', 'GU222516');\
+\
+\
+\
+DROP TABLE Guests\
+CREATE TABLE Guests \
+(\
+    Guest_UserID	VARCHAR(512),\
+    LoyaltyPoints	VARCHAR(512),\
+    CONSTRAINT FK_Guests_UserData FOREIGN KEY (Guest_UserID) REFERENCES UserData(UserID)\
+);\
+\
+INSERT INTO Guests (Guest_UserID, LoyaltyPoints) VALUES ('GU137026', '4997 points');\
+INSERT INTO Guests (Guest_UserID, LoyaltyPoints) VALUES ('GU158633', '3435 points');\
+INSERT INTO Guests (Guest_UserID, LoyaltyPoints) VALUES ('GU168769', '4287 points');\
+INSERT INTO Guests (Guest_UserID, LoyaltyPoints) VALUES ('GU179528', '5690 points');\
+INSERT INTO Guests (Guest_UserID, LoyaltyPoints) VALUES ('GU190943', '8117 points');\
+INSERT INTO Guests (Guest_UserID, LoyaltyPoints) VALUES ('GU212050', '6011 points');\
+INSERT INTO Guests (Guest_UserID, LoyaltyPoints) VALUES ('GU214531', '8116 points');\
+\
+\
+\
+DROP TABLE Hosts\
+CREATE TABLE Hosts \
+(\
+    Host_UserID	VARCHAR(512),\
+    SuperHostStatus	VARCHAR(512),\
+    CONSTRAINT FK_Hosts_UserData FOREIGN KEY (Host_UserID) REFERENCES UserData(UserID)\
+);\
+\
+INSERT INTO Hosts (Host_UserID, SuperHostStatus) VALUES ('HO155548', 'Yes');\
+INSERT INTO Hosts (Host_UserID, SuperHostStatus) VALUES ('HO162467', 'No');\
+INSERT INTO Hosts (Host_UserID, SuperHostStatus) VALUES ('HO171054', 'Yes');\
+INSERT INTO Hosts (Host_UserID, SuperHostStatus) VALUES ('HO189754', 'No');\
+INSERT INTO Hosts (Host_UserID, SuperHostStatus) VALUES ('HO193038', 'Yes');\
+INSERT INTO Hosts (Host_UserID, SuperHostStatus) VALUES ('HO213371', 'No');\
+INSERT INTO Hosts (Host_UserID, SuperHostStatus) VALUES ('HO219276', 'Yes');\
+\
+\
+\
+DROP TABLE Property \
+CREATE TABLE Property \
+(\
+    PropertyID	VARCHAR(512),\
+    RoomType	VARCHAR(512),\
+    Rating	FLOAT,\
+    PricePerNight	INT,\
+    Street	VARCHAR(512),\
+    City	VARCHAR(512),\
+    Zip	INT,\
+    Host_UserID	VARCHAR(512), \
+    CONSTRAINT PK_Property PRIMARY KEY (PropertyID),\
+    CONSTRAINT FK_Property_Hosts_UserData FOREIGN KEY (Host_UserID) REFERENCES UserData(UserID)\
+);\
+\
+INSERT INTO Property (PropertyID, RoomType,  Rating,  PricePerNight, Street, City, Zip, Host_UserID) VALUES ('11536043', 'Studio ', '5.0', '150', 'Cedar Crest Lane', 'Metroville', '43311', 'HO155548');\
+INSERT INTO Property (PropertyID, RoomType,  Rating,  PricePerNight, Street, City, Zip, Host_UserID) VALUES ('22761648', '1Bedroom ', '4.9', '200', 'Maple Avenue', 'Metroville', '41452', 'HO162467');\
+INSERT INTO Property (PropertyID, RoomType,  Rating,  PricePerNight, Street, City, Zip, Host_UserID) VALUES ('73305590', '2Bedroom ', '4.6', '300', 'Elm Street', 'Metroville', '39113', 'HO171054');\
+INSERT INTO Property (PropertyID, RoomType,  Rating,  PricePerNight, Street, City, Zip, Host_UserID) VALUES ('50972762', 'PrivateRoom ', '4.7', '125', 'River Road', 'Metroville', '64492', 'HO189754');\
+INSERT INTO Property (PropertyID, RoomType,  Rating,  PricePerNight, Street, City, Zip, Host_UserID) VALUES ('13271240', 'Studio ', '4.2', '150', 'Parkside Drive', 'Metroville', '80216', 'HO193038');\
+INSERT INTO Property (PropertyID, RoomType,  Rating,  PricePerNight, Street, City, Zip, Host_UserID) VALUES ('91675183', '1Bedroom ', '4.1', '200', 'Willow Way', 'Metroville', '19855', 'HO213371');\
+INSERT INTO Property (PropertyID, RoomType,  Rating,  PricePerNight, Street, City, Zip, Host_UserID) VALUES ('83432302', '2Bedroom ', '4.0', '300', 'Sunnybrook Circle', 'Metroville', '47851', 'HO219276');\
+\
+\
+\
+DROP TABLE Media \
+CREATE TABLE Media \
+(\
+    MediaUrl	VARCHAR(512),\
+    PropertyID	VARCHAR(512), \
+  	CONSTRAINT PK_Media PRIMARY KEY (MediaURL),\
+  	CONSTRAINT FK_Media_PropertyID FOREIGN KEY (PropertyID) REFERENCES Property(PropertyID)  	\
+);\
+\
+INSERT INTO Media (MediaUrl, PropertyID) VALUES ('https://media.example.com/media1.avi', '11536043');\
+INSERT INTO Media (MediaUrl, PropertyID) VALUES ('https://media.example.com/media2.jpg', '22761648');\
+INSERT INTO Media (MediaUrl, PropertyID) VALUES ('https://media.example.com/media3.avi', '73305590');\
+INSERT INTO Media (MediaUrl, PropertyID) VALUES ('https://media.example.com/media4.avi', '50972762');\
+INSERT INTO Media (MediaUrl, PropertyID) VALUES ('https://media.example.com/media5.png', '13271240');\
+INSERT INTO Media (MediaUrl, PropertyID) VALUES ('https://media.example.com/media6.jpg', '91675183');\
+INSERT INTO Media (MediaUrl, PropertyID) VALUES ('https://media.example.com/media7.png', '83432302');\
+\
+\
+\
+DROP TABLE Reservation\
+CREATE TABLE Reservation \
+(\
+    ReservationID	VARCHAR(512),\
+    DateOfBooking	VARCHAR(512),\
+    StartDate	VARCHAR(512),\
+    EndDate	VARCHAR(512),\
+    TotalPrice	DOUBLE,\
+    Cancellation	VARCHAR(512),\
+    Guest_UserID	VARCHAR(512),\
+    PropertyID	VARCHAR(512),\
+  	CONSTRAINT PK_Reservation PRIMARY KEY (ReservationID),\
+		CONSTRAINT FK_Reservation_Guests_UserData FOREIGN KEY (Guest_UserID) REFERENCES UserData(UserID),  	\
+ 	  CONSTRAINT FK_Reservation_PropertyID FOREIGN KEY (PropertyID) REFERENCES Property(PropertyID)\
+);\
+\
+INSERT INTO Reservation (ReservationID, DateOfBooking, StartDate, EndDate, TotalPrice, Cancellation, Guest_UserID, PropertyID) VALUES ('VNWQAF', '2023-09-09', '2023-10-09', '2023-10-18', '1500.00', 'N', 'GU137026', '11536043');\
+INSERT INTO Reservation (ReservationID, DateOfBooking, StartDate, EndDate, TotalPrice, Cancellation, Guest_UserID, PropertyID) VALUES ('M8U046', '2023-03-05', '2023-04-05', '2023-04-07', '400.00', 'N', 'GU158633', '22761648');\
+INSERT INTO Reservation (ReservationID, DateOfBooking, StartDate, EndDate, TotalPrice, Cancellation, Guest_UserID, PropertyID) VALUES ('Z7LPMM', '2023-07-07', '2023-08-07', '2023-08-21', '2100.00', 'N', 'GU168769', '73305590');\
+INSERT INTO Reservation (ReservationID, DateOfBooking, StartDate, EndDate, TotalPrice, Cancellation, Guest_UserID, PropertyID) VALUES ('CGEW3B', '2023-03-29', '2023-04-29', '2023-05-01', '250.00', 'N', 'GU179528', '50972762');\
+INSERT INTO Reservation (ReservationID, DateOfBooking, StartDate, EndDate, TotalPrice, Cancellation, Guest_UserID, PropertyID) VALUES ('63SMU6', '2022-03-30', '2022-04-30', '2022-05-06', '900.00', 'N', 'GU190943', '13271240');\
+INSERT INTO Reservation (ReservationID, DateOfBooking, StartDate, EndDate, TotalPrice, Cancellation, Guest_UserID, PropertyID) VALUES ('XUD0NI', '2022-09-10', '2022-10-10', '2022-10-24', '1400.00', 'N', 'GU212050', '91675183');\
+INSERT INTO Reservation (ReservationID, DateOfBooking, StartDate, EndDate, TotalPrice, Cancellation, Guest_UserID, PropertyID) VALUES ('DVDKJ2', '2023-03-09', '2023-04-09', '2023-04-14', '1500.00', 'N', 'GU214531', '83432302');\
+\
+\
+DROP TABLE HostReviews\
+CREATE TABLE HostReviews \
+(\
+    HostReviewID	VARCHAR(512),\
+    HostRating	FLOAT,\
+    Host_UserID	VARCHAR(512),\
+    ReservationID	VARCHAR(512), \
+    CONSTRAINT PK_HostReviews PRIMARY KEY (HostReviewID),\
+		CONSTRAINT FK_HostReviews_Hosts_UserData FOREIGN KEY (Host_UserID) REFERENCES UserData(UserID),  	\
+ 	  CONSTRAINT FK_HostReviews_ReservationID FOREIGN KEY (ReservationID) REFERENCES Reservation(ReservationID)\
+);\
+\
+INSERT INTO HostReviews (HostReviewID, HostRating, Host_UserID, ReservationID) VALUES ('MG15IXL4', '5.00', 'HO155548', 'VNWQAF');\
+INSERT INTO HostReviews (HostReviewID, HostRating, Host_UserID, ReservationID) VALUES ('8RPN2BVE', \'914.60', 'HO162467', 'M8U046');\
+INSERT INTO HostReviews (HostReviewID, HostRating, Host_UserID, ReservationID) VALUES ('8TT5TTAV', \'914.30', 'HO171054', 'Z7LPMM');\
+INSERT INTO HostReviews (HostReviewID, HostRating, Host_UserID, ReservationID) VALUES ('5HKKASQJ', '4.00', 'HO189754', 'CGEW3B');\
+INSERT INTO HostReviews (HostReviewID, HostRating, Host_UserID, ReservationID) VALUES ('4CBQHXZV', '4.50', 'HO193038', '63SMU6');\
+INSERT INTO HostReviews (HostReviewID, HostRating, Host_UserID, ReservationID) VALUES ('01Q3CQWW', '4.30', 'HO213371', 'XUD0NI');\
+INSERT INTO HostReviews (HostReviewID, HostRating, Host_UserID, ReservationID) VALUES ('1NY0QHQK', '4.20', 'HO219276', 'DVDKJ2');\
+\
+\
+\
+DROP TABLE GuestReviews\
+CREATE TABLE GuestReviews \
+(\
+    GuestReviewID	VARCHAR(512),\
+    GuestRating	FLOAT,\
+    Guest_UserID	VARCHAR(512),\
+    ReservationID	VARCHAR(512), \
+  	CONSTRAINT PK_GuestReviews PRIMARY KEY (GuestReviewID),\
+		CONSTRAINT FK_GuestReviews_Guests_UserData FOREIGN KEY (Guest_UserID) REFERENCES UserData(UserID),  	\
+ 	  CONSTRAINT FK_GuestReviews_ReservationID FOREIGN KEY (ReservationID) REFERENCES Reservation(ReservationID)\
+);\
+\
+INSERT INTO GuestReviews (GuestReviewID, GuestRating, Guest_UserID, ReservationID) VALUES ('B5OXDCIT', '5.00', 'GU137026', 'VNWQAF');\
+INSERT INTO GuestReviews (GuestReviewID, GuestRating, Guest_UserID, ReservationID) VALUES ('QDIGCKXZ', '4.80', 'GU158633', 'M8U046');\
+INSERT INTO GuestReviews (GuestReviewID, GuestRating, Guest_UserID, ReservationID) VALUES ('9OB9LKRE', '4.90', 'GU168769', 'Z7LPMM');\
+INSERT INTO GuestReviews (GuestReviewID, GuestRating, Guest_UserID, ReservationID) VALUES ('JIRD8MCR', \'914.60', 'GU179528', 'CGEW3B');\
+INSERT INTO GuestReviews (GuestReviewID, GuestRating, Guest_UserID, ReservationID) VALUES ('I0IQT00G', '4.50', 'GU190943', '63SMU6');\
+INSERT INTO GuestReviews (GuestReviewID, GuestRating, Guest_UserID, ReservationID) VALUES ('0L4YLJ6G', '4.30', 'GU212050', 'XUD0NI');\
+INSERT INTO GuestReviews (GuestReviewID, GuestRating, Guest_UserID, ReservationID) VALUES ('6FQ8TG9H', \'914.60', 'GU214531', 'DVDKJ2');\
+\
+\
+\
+Drop Table Payments\
+CREATE TABLE Payments \
+(\
+    PaymentID	VARCHAR(512),\
+    PaymentDate	VARCHAR(512),\
+    Price	FLOAT,\
+    Guest_UserID	VARCHAR(512),\
+    ReservationID	VARCHAR(512), \
+  	CONSTRAINT PK_Payments PRIMARY KEY (PaymentID),\
+		CONSTRAINT FK_Payments_Guests_UserData FOREIGN KEY (Guest_UserID) REFERENCES UserData(UserID),  	\
+ 	  CONSTRAINT FK_Payments_ReservationID FOREIGN KEY (ReservationID) REFERENCES Reservation(ReservationID)\
+);\
+\
+INSERT INTO Payments (PaymentID, PaymentDate, Price, Guest_UserID, ReservationID) VALUES ('JQGOHULWIA', '19/09/2023', '1500.00', 'GU137026', 'VNWQAF');\
+INSERT INTO Payments (PaymentID, PaymentDate, Price, Guest_UserID, ReservationID) VALUES ('ETCR3JYVV4', '25/03/2023', '400.00', 'GU158633', 'M8U046');\
+INSERT INTO Payments (PaymentID, PaymentDate, Price, Guest_UserID, ReservationID) VALUES ('3O7ZAW7RDU', '16/07/2023', '2100.00', 'GU168769', 'Z7LPMM');\
+INSERT INTO Payments (PaymentID, PaymentDate, Price, Guest_UserID, ReservationID) VALUES ('VNNSB1I4SQ', '29/03/2023', '250.00', 'GU179528', 'CGEW3B');\
+INSERT INTO Payments (PaymentID, PaymentDate, Price, Guest_UserID, ReservationID) VALUES ('MR81PWFVH5', '30/03/2022', '900.00', 'GU190943', '63SMU6');\
+INSERT INTO Payments (PaymentID, PaymentDate, Price, Guest_UserID, ReservationID) VALUES ('AMP8EBUFRX', '21/09/2022', '1400.00', 'GU212050', 'XUD0NI');\
+INSERT INTO Payments (PaymentID, PaymentDate, Price, Guest_UserID, ReservationID) VALUES ('18D2AISZ7S', '21/03/2023', '1500.00', 'GU214531', 'DVDKJ2');\
+}
